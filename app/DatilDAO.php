@@ -16,4 +16,24 @@ class DatilDAO extends DB
 
     }
 
+    public function buscar($idDatil)
+    {
+
+        try
+        {
+
+            $predio = Datil::findOrFail($idDatil);
+
+            return $predio;
+
+        }
+        catch (Exception $e)
+        {
+
+            return "No se encontró el datil";
+
+        }
+
+    }
+
 }

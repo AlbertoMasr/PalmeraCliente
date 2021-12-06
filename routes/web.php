@@ -20,3 +20,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'PedidoController@iniciaPedido')->name('home');
+Route::get('/home/{datil}{opcion}', 'PedidoController@seleccionarProducto')->name('home.datil');
+Route::post('/home', 'PedidoController@agregarProducto')->name('home.agregarDatil');

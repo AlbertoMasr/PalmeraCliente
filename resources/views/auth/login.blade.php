@@ -1,11 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
+
+                @if (\Session::has('mensaje'))
+
+                    
+                    <div class="alert alert-danger">
+                        <p>{{ \Session::get('mensaje') }}</p>
+                    </div>
+
+                @endif              
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -53,9 +63,18 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
+
+                                @if (\Session::has('mensaje'))
+
+                                    <a class="btn btn-primary" href="{{ route('home.datil', ['datil' => \Session::get('idDatil'), 'opcion' => 0] ) }}"> Ingresar </a>
+                                        
+                                @else
+                                
+                                    <button type="submit" class="btn btn-primary">
+                                        {{ __('Login') }}
+                                    </button>                            
+
+                                @endif               
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
