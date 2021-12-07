@@ -30,34 +30,10 @@ class PedidoController extends Controller
 
     }
 
-    public function seleccionarProducto($idDatil, $opcion)
+    public function seleccionarProducto(Datil $datil)
     {
 
-        if ($opcion == 1){
-
-            $datil = $this->datil->getDatil($idDatil);
-
             return view('datil', compact('datil'));
-
-        }
-
-        if(!Auth::check())
-        {
-
-            $logearse = 'Credenciales incorrectas';
-
-            return redirect()->route('login')
-            ->with('mensaje', $logearse)
-            ->with('idDatil', $idDatil);
-
-        }else
-        {
-
-            $datil = $this->datil->getDatil($idDatil);
-
-            return view('datil', compact('datil'));
-
-        }
 
     }
 
@@ -75,14 +51,22 @@ class PedidoController extends Controller
             $logearse = 'Favor de logearse para agregar producto';
 
             return redirect()->route('login')
-            ->with('mensaje', $logearse)
-            ->with('idDatil', $data['idDatil']);
+            ->with('mensaje', $logearse);
 
         }
 
         $respuesta = json_decode($this->pedido->agregarProducto( $data["idDatil"], $data["cantidad"], Auth::user()->Clientes->getID()));
 
         return redirect()->action("PedidoController@iniciaPedido")->with($respuesta->tipo, $respuesta->mensaje);
+
+    }
+
+    public function confirmarPedido($idCliente)
+    {
+
+        $carritoDeCompra = $this->pedido->getArticulos($idCliente);
+
+        return view('carrito', compact('carritoDeCompra'));
 
     }
 

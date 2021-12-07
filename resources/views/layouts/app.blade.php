@@ -115,7 +115,9 @@
                 </li>
             </ul>
 
-            <button class="btn btn-outline-success my-2 my-sm-0 mr-4" type="submit">Carrito</button>
+            <a href="{{ route('login')}}" class="btn btn-outline-success my-2 my-sm-0 mr-4">Carrito</a>
+
+            <!--button class="btn btn-outline-success my-2 my-sm-0 mr-4" type="submit">Carrito</button-->
 
             @else
             
@@ -139,7 +141,9 @@
                 </li>
             </ul>
 
-        <button class="btn btn-outline-success my-2 my-sm-0 mr-4" type="submit">Carrito</button>
+            <a href="{{ route('carrito', Auth::user()->Clientes->getID())}}" class="btn btn-outline-success my-2 my-sm-0 mr-4">Carrito</a>
+
+            <!--button class="btn btn-outline-success my-2 my-sm-0 mr-4" type="submit">Carrito</button-->
 
             @endguest
             

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class CarritoDeCompra extends Model
 {
 
-    protected $table = "CarritoDeCompras";
+    protected $table = "carritodecompras";
     protected $primaryKey = ['idCliente', 'idDatil'];
     protected $fillable = ['cantidad'];
     public $timestamps = false;
@@ -16,13 +16,12 @@ class CarritoDeCompra extends Model
     private $idDatiles;
     private $cantidades;
     private $idClientes;
-    
-    public function __construct($datil, $cantidades, $idClientes)
+    public $carritoDeCompraDAO;
+
+    public function __construct()
     {
 
-        $this->idDatiles   = $datil;
-        $this->cantidades  = $cantidades;
-        $this->idClientes = $idClientes;
+        $this->carritoDeCompraDAO = new CarritoDeCompraDAO();
         
     }
 
@@ -86,4 +85,12 @@ class CarritoDeCompra extends Model
 
         return $this;
     }
+
+    public function objetoDatil()
+    {
+
+        return $this->hasMany(Datil::class, 'idDatil');
+
+    }
+
 }

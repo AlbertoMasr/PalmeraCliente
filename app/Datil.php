@@ -27,10 +27,10 @@ class Datil extends Model
 
     }
 
-    public function getDatil($idDatil)
+    public function getDatil($datil)
     {
 
-        return $this->datilDAO->buscar($idDatil);
+        return $this->datilDAO->buscar($datil);
 
     }
 
@@ -60,6 +60,13 @@ class Datil extends Model
 
         return $this->Precio;
         
+    }
+
+    public function objetoCarrito()
+    {
+
+        return $this->hasMany(CarritoDeCompra::class, ['idCliente', 'idDatil']);
+
     }
 
 }

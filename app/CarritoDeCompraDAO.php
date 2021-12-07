@@ -16,4 +16,11 @@ class CarritoDeCompraDAO extends DB
     
     }
 
+    public function getArticulos($idCliente)
+    {
+
+        return CarritoDeCompra::where('idCliente', '=', $idCliente)->get();
+
+    }
+
 }
