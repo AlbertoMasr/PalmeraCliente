@@ -5,23 +5,24 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
-class CarritoDeCompra extends Model
+class ProductosCarrito extends Model
 {
 
-    protected $table = "carritodecompras";
+    protected $table = "productoscarrito";
     protected $primaryKey = ['idCliente', 'idDatil'];
     protected $fillable = ['cantidad'];
     public $timestamps = false;
+    public $incrementing = false;
 
     private $idDatiles;
     private $cantidades;
     private $idClientes;
-    public $carritoDeCompraDAO;
+    public $productosCarritoDAO;
 
     public function __construct()
     {
 
-        $this->carritoDeCompraDAO = new CarritoDeCompraDAO();
+        $this->productosCarritoDAO = new productosCarritoDAO();
         
     }
 
@@ -51,7 +52,7 @@ class CarritoDeCompra extends Model
      */ 
     public function getCantidades()
     {
-        return $this->cantidades;
+        return $this->cantidad;
     }
 
     /**
@@ -61,7 +62,7 @@ class CarritoDeCompra extends Model
      */ 
     public function setCantidades($cantidades)
     {
-        $this->cantidades = $cantidades;
+        $this->cantidad = $cantidades;
 
         return $this;
     }
@@ -89,7 +90,7 @@ class CarritoDeCompra extends Model
     public function objetoDatil()
     {
 
-        return $this->hasMany(Datil::class, 'idDatil');
+        return $this->belongsTo(Datil::class, 'idDatil');
 
     }
 

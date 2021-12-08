@@ -4,30 +4,32 @@
 
     <div class="container" style="margin-top: 5%">
 
-        @foreach( $carritoDeCompra as $producto )
+         @foreach( $productoCarrito as $producto )
 
-            <div class="card-columns">
+            <div class="card-columns"> 
 
                 <div class="card p-3">
 
-                    <img class="card-img-top" src="../" alt="Datiles">
+                    <img href="{{ route('home.datil', $producto->objetoDatil->getID()) }}" class="card-img-top" src="../" >
 
-                    <a href="{{ route('home.datil', $producto->objetoDatil->getID()) }}">
+                    <div class="card-body">
 
-                        <div class="card-body">
-
-                            <h5 class="card-title">{{$producto->objetoDatil->getVariedad()}} - {{$producto->objetoDatil->getCategoria()}}</h5>
-                            <p class="card-text">{{$producto->getCantidad()}}</p>
+                        <h5 class="card-title">{{$producto->objetoDatil->objetoVariedad->getVarNombre()}} - {{$producto->objetoDatil->getCategoria() == 1 ? 'Orgánico' : 'No Orgánico'}}</h5>
+                        <input type="number" min="1" max="1000" value="{{$producto->getCantidades()}}" />
                         
-                        </div>
+                    
+                    </div>
 
-                    </a>
+                    <a class="btn btn-primary" > Actualizar </a>
+                    <a class="btn btn-danger" href="{{ route('carrito.eliminarProducto', ['idCliente' => $producto->getIdClientes(), 'idDatil' => $producto->getIdDatiles()] ) }}"> Eliminar </a>                    
             
                 </div>
             
-            </div>
+            </div> 
 
-        @endforeach
+        @endforeach 
+
+        <a class="btn btn-primary" > Pagar </a>
 
     </div>
 

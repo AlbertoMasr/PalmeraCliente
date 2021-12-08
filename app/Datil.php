@@ -62,10 +62,15 @@ class Datil extends Model
         
     }
 
-    public function objetoCarrito()
-    {
+    public function setVariedad($VarId){
 
-        return $this->hasMany(CarritoDeCompra::class, ['idCliente', 'idDatil']);
+        $this->Variedad = $VarId;
+
+    }
+
+    public function objetoVariedad(){
+
+        return $this->belongsTo(Variedades::class, 'Variedad', 'VarID');
 
     }
 

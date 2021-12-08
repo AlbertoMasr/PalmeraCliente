@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div class="container" style="margin-top: 5%">
+    <div class="container" style="margin-top: 5%" enctype="multipart/form-data">
 
         @if (\Session::has('error'))
 
@@ -27,14 +27,14 @@
 
                 <div class="card p-3">
 
-                    <img class="card-img-top" src="../" alt="Datiles">
+                    <img class="card-img-top" src="/Meedjol.png" alt="Datiles">
 
                     <a href="{{ route('home.datil', $datil->getID()) }}">
 
                         <div class="card-body">
 
-                            <h5 class="card-title">{{$datil->getVariedad()}} - {{$datil->getCategoria()}}</h5>
-                            <p class="card-text">{{$datil->getPrecio()}}</p>
+                            <h5 class="card-title">{{$datil->objetoVariedad->getVarNombre()}} - {{$datil->getCategoria() == 1 ? 'Orgánico' : 'No Orgánico'}}</h5>
+                            <p class="card-text">Precio: ${{ $datil->getPrecio()}}</p>
                         
                         </div>
 
@@ -45,107 +45,6 @@
             </div>
 
         @endforeach
-
-        <br>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident vel culpa adipisci expedita, labore corrupti? Temporibus necessitatibus similique accusamus laborum officia laudantium maxime fugiat optio accusantium repudiandae blanditiis, nostrum voluptatum!
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident vel culpa adipisci expedita, labore corrupti? Temporibus necessitatibus similique accusamus laborum officia laudantium maxime fugiat optio accusantium repudiandae blanditiis, nostrum voluptatum!
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident vel culpa adipisci expedita, labore corrupti? Temporibus necessitatibus similique accusamus laborum officia laudantium maxime fugiat optio accusantium repudiandae blanditiis, nostrum voluptatum!
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident vel culpa adipisci expedita, labore corrupti? Temporibus necessitatibus similique accusamus laborum officia laudantium maxime fugiat optio accusantium repudiandae blanditiis, nostrum voluptatum!
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
 
     </div>
 @endsection

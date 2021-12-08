@@ -64,9 +64,15 @@ class PedidoController extends Controller
     public function confirmarPedido($idCliente)
     {
 
-        $carritoDeCompra = $this->pedido->getArticulos($idCliente);
+        $productoCarrito = $this->pedido->getArticulos($idCliente);
 
-        return view('carrito', compact('carritoDeCompra'));
+        return view('carrito')->with('productoCarrito',$productoCarrito);
+
+    }
+
+    public function eliminarProductoCarrito($idCliente, $idDatil){
+        
+        dd($idCliente);
 
     }
 

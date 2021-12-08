@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 use PHPUnit\Framework\MockObject\Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class CarritoDeCompraDAO extends DB
+class ProductosCarritoDAO extends DB
 {
 
     public function añadir($cdc)
@@ -19,7 +19,7 @@ class CarritoDeCompraDAO extends DB
     public function getArticulos($idCliente)
     {
 
-        return CarritoDeCompra::where('idCliente', '=', $idCliente)->get();
+        return ProductosCarrito::where('idCliente', '=', $idCliente)->get();
 
     }
 

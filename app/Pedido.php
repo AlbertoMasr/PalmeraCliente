@@ -11,24 +11,24 @@ class Pedido extends Model
     protected $primaryKey = 'idPedido';
     protected $fillable = ['Cliente', 'Empleado', 'Entregado', 'FechaPedido', 'FechaEntregado'];
     
-    public $carritoDeCompraDAO;
+    public $productosCarritoDAO;
 
     public function __construct()
     {
 
-        $this->carritoDeCompraDAO = new CarritoDeCompraDAO();
+        $this->productosCarritoDAO = new productosCarritoDAO();
         
     }
 
     public function agregarProducto($datil, $cantidad, $idCliente)
     {
 
-        $cdc = new CarritoDeCompra();
+        $cdc = new ProductosCarrito();
         $cdc->setIdDatiles($datil);
         $cdc->setCantidades($cantidad);
         $cdc->setIdClientes($idCliente);
 
-        $respuesta = $this->carritoDeCompraDAO->añadir($cdc);
+        $respuesta = $this->productosCarritoDAO->añadir($cdc);
 
         return json_encode($respuesta);
 
@@ -37,7 +37,7 @@ class Pedido extends Model
     public function getArticulos($idCliente)
     {
 
-        return $this->carritoDeCompraDAO->getArticulos($idCliente);
+        return $this->productosCarritoDAO->getArticulos($idCliente);
 
     }
 

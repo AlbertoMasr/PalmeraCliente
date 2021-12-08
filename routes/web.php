@@ -23,3 +23,4 @@ Route::get('/home', 'PedidoController@iniciaPedido')->name('home');
 Route::get('/carrito{idCliente}', 'PedidoController@confirmarPedido')->name('carrito');
 Route::get('/home/{datil}', 'PedidoController@seleccionarProducto')->name('home.datil');
 Route::post('/home', 'PedidoController@agregarProducto')->name('home.agregarDatil');
+Route::post('/carrito{idCliente}{idDatil}', 'PedidoController@eliminarProductoCarrito')->name('carrito.eliminarProducto');
