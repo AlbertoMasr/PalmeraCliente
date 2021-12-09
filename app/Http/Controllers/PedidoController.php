@@ -72,7 +72,7 @@ class PedidoController extends Controller
 
     public function eliminarProductoCarrito($idCliente, $idDatil){
         
-        dd($idCliente);
+        $respuesta = json_decode($this->pedido->eliminarPredio($data['IdPredio']));
 
     }
 

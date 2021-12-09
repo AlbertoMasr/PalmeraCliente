@@ -26,40 +26,23 @@ class ProductosCarrito extends Model
         
     }
 
-
-    /**
-     * Get the value of idDatiles
-     */ 
     public function getIdDatiles()
     {
-        return $this->idDatiles;
+        return $this->idDatil;
     }
 
-    /**
-     * Set the value of idDatiles
-     *
-     * @return  self
-     */ 
     public function setIdDatiles($idDatiles)
     {
-        $this->idDatiles = $idDatiles;
+        $this->idDatil = $idDatiles;
 
         return $this;
     }
 
-    /**
-     * Get the value of cantidades
-     */ 
     public function getCantidades()
     {
         return $this->cantidad;
     }
 
-    /**
-     * Set the value of cantidades
-     *
-     * @return  self
-     */ 
     public function setCantidades($cantidades)
     {
         $this->cantidad = $cantidades;
@@ -67,22 +50,14 @@ class ProductosCarrito extends Model
         return $this;
     }
 
-    /**
-     * Get the value of idClientes
-     */ 
     public function getIdClientes()
     {
-        return $this->idClientes;
+        return $this->idCliente;
     }
 
-    /**
-     * Set the value of idClientes
-     *
-     * @return  self
-     */ 
     public function setIdClientes($idClientes)
     {
-        $this->idClientes = $idClientes;
+        $this->idCliente = $idClientes;
 
         return $this;
     }

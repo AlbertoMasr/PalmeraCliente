@@ -14,12 +14,12 @@
 
                     <div class="card-body">
 
-                        <h5 class="card-title">{{$producto->objetoDatil->objetoVariedad->getVarNombre()}} - {{$producto->objetoDatil->getCategoria() == 1 ? 'Orgánico' : 'No Orgánico'}}</h5>
+                        <h5 class="card-title">{{$producto->objetoDatil->objetoVariedad->getVarNombre()}} - {{$producto->objetoDatil->objetoCategoria->getCatNombre()}}</h5>
                         <input type="number" min="1" max="1000" value="{{$producto->getCantidades()}}" />
                         
                     
                     </div>
-
+                    
                     <a class="btn btn-primary" > Actualizar </a>
                     <a class="btn btn-danger" href="{{ route('carrito.eliminarProducto', ['idCliente' => $producto->getIdClientes(), 'idDatil' => $producto->getIdDatiles()] ) }}"> Eliminar </a>                    
             

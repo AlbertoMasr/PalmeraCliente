@@ -13,6 +13,7 @@ class Datil extends Model
 
     private $datilDAO;
 
+    /* Referencia a Capa Técnica */
     public function __construct()
     {
 
@@ -20,20 +21,7 @@ class Datil extends Model
 
     }
     
-    public function getDatiles()
-    {
-
-        return $this->datilDAO->getDatiles();
-
-    }
-
-    public function getDatil($datil)
-    {
-
-        return $this->datilDAO->buscar($datil);
-
-    }
-
+    /* Métodos Get y Set para clase Datil  */
     public function getID()
     {
 
@@ -68,10 +56,26 @@ class Datil extends Model
 
     }
 
+    /* Mensajes hacia la Capa Técnica */
+    public function getDatiles()
+    {
+
+        return $this->datilDAO->getDatiles();
+
+    }
+
+
+    /* Referencia entre clases */
     public function objetoVariedad(){
 
         return $this->belongsTo(Variedades::class, 'Variedad', 'VarID');
 
     }
 
+    public function objetoCategoria()
+    {
+        return $this->belongsTo(Categoria::class, 'Categoria', 'CatID');
+    }
+
 }
+

@@ -33,7 +33,7 @@
 
                         <div class="card-body">
 
-                            <h5 class="card-title">{{$datil->objetoVariedad->getVarNombre()}} - {{$datil->getCategoria() == 1 ? 'Orgánico' : 'No Orgánico'}}</h5>
+                            <h5 class="card-title">{{$datil->objetoVariedad->getVarNombre()}} - {{$datil->objetoCategoria->getCatNombre()}}</h5>
                             <p class="card-text">Precio: ${{ $datil->getPrecio()}}</p>
                         
                         </div>
