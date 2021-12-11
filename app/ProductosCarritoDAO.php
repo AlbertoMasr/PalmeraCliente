@@ -23,4 +23,35 @@ class ProductosCarritoDAO extends DB
 
     }
 
+    public function eliminarProductoCarrito($idCliente, $idDatil){
+
+        try{
+
+            ProductosCarrito::where('idCliente', '=', $idCliente)->where('idDatil', '=', $idDatil)->delete();
+
+            $respuesta = array(
+                "tipo" => "mensaje",
+                "mensaje" => "Producto eliminado correctamente"
+            );
+
+        }catch(Exception $e){
+
+            $respuesta = array(
+                "tipo" => "error",
+                "mensaje" => "Ocurrio un error al eliminar el producto"
+            );            
+
+        }
+
+        return $respuesta;
+
+    }
+
+    public function actualizarProductoCarrito($cdc)
+    {
+
+        return DB::select("CALL sp_actualizar_producto_carrito(".$cdc->getIdClientes().",".$cdc->getIdDatiles().",".$cdc->getCantidades()." )")[0];
+    
+    }    
+
 }

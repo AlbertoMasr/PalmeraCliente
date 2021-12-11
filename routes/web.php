@@ -24,3 +24,6 @@ Route::get('/carrito/{idCliente}', 'PedidoController@confirmarPedido')->name('ca
 Route::get('/home/{datil}', 'PedidoController@seleccionarProducto')->name('home.datil');
 Route::post('/home', 'PedidoController@agregarProducto')->name('home.agregarDatil');
 Route::get('/carrito/{idCliente}/{idDatil}', 'PedidoController@eliminarProductoCarrito')->name('carrito.eliminarProducto');
+Route::post('/carrito', 'PedidoController@actualizarProductoCarrito')->name('carrito.actualizarProducto');
+Route::get('/pago/{total}', 'PedidoController@solicitarTarjeta')->name('compra.solicitarTarjeta');
+Route::post('/pago', 'PedidoController@validarPago')->name('compra.validarPago');

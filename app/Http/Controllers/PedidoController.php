@@ -66,14 +66,58 @@ class PedidoController extends Controller
 
         $productoCarrito = $this->pedido->getArticulos($idCliente);
 
-        return view('carrito')->with('productoCarrito',$productoCarrito);
+        $total = $this->pedido->getTotal($productoCarrito);
+
+        return view('carrito')->with('productoCarrito',$productoCarrito)->with('total', $total);
 
     }
 
     public function eliminarProductoCarrito($idCliente, $idDatil){
-        
-        $respuesta = json_decode($this->pedido->eliminarPredio($data['IdPredio']));
+                
+
+
+        $respuesta = json_decode($this->pedido->eliminarProductoCarrito($idCliente, $idDatil));
+
+        return redirect()->action("PedidoController@confirmarPedido", $idCliente)->with($respuesta->tipo, $respuesta->mensaje);
 
     }
+
+    public function actualizarProductoCarrito(Request $request){
+
+        $data = request()->validate([
+            'cantidad' => 'required|numeric',
+            'idCliente' => 'required|numeric',
+            'idDatil' => 'required|numeric'
+        ]);
+
+        $respuesta = json_decode($this->pedido->actualizarProductoCarrito($data["idCliente"], $data["idDatil"], $data["cantidad"]));
+
+        return redirect()->action("PedidoController@confirmarPedido", $data["idCliente"])->with($respuesta->tipo, $respuesta->mensaje);
+
+    }    
+
+    public function solicitarTarjeta($total){
+    
+        return view('pago')->with('total', $total);
+
+    }
+
+    public function validarPago(Request $request){
+
+        $data = request()->validate([
+            'Nombre' => 'required',
+            'NoTarjeta' => 'required|numeric',
+            'FechaVencimiento' => 'required|numeric',
+            'CVV' => 'required|numeric',
+            'Total' => 'required'
+        ]);
+
+        $respuesta = $this->pedido->realizarPago($data["NoTarjeta"], $data["CVV"], $data["Total"]);
+
+        
+
+        //return redirect()->action("PedidoController@confirmarPedido", $data["idCliente"])->with($respuesta->tipo, $respuesta->mensaje);
+
+    }        
 
 }

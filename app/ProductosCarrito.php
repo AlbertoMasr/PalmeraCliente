@@ -62,6 +62,44 @@ class ProductosCarrito extends Model
         return $this;
     }
 
+    public function añadir(){
+        
+        return $this->productosCarritoDAO->añadir($this);
+
+    }
+
+    public function getArticulos($idCliente){
+        
+        return $this->productosCarritoDAO->getArticulos($idCliente);
+
+    }
+
+    public function getSubTotal($productosCarrito){
+
+        $subtotal = 0;
+
+        foreach ($productosCarrito as $productoCarrito) {
+            $subtotal += ($productoCarrito->objetoDatil->getPrecio() * $productoCarrito->getCantidades() );
+        }
+
+        return $subtotal;
+
+    }
+
+    public function eliminarProductoCarrito($idCliente, $iDatil){
+
+        return $this->productosCarritoDAO->eliminarProductoCarrito($idCliente, $iDatil);
+
+    }
+
+    public function actualizarProductoCarrito(){
+
+        return $this->productosCarritoDAO->actualizarProductoCarrito($this);
+
+    }
+
+
+    /* Relacion entre clases */
     public function objetoDatil()
     {
 

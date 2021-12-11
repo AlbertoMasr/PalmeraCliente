@@ -27,9 +27,9 @@
 
                 <div class="card p-3">
 
-                    <img class="card-img-top" src="/Meedjol.png" alt="Datiles">
-
-                    <a href="{{ route('home.datil', $datil->getID()) }}">
+                    <a href="{{ route('home.datil', $datil->getID()) }}" width="100" heigth="100">
+                        <img class="card-img-top" src="http://127.0.0.1:8000/img/{{$datil->getVariedad()}}.jpg" >
+                    </a>                    
 
                         <div class="card-body">
 
