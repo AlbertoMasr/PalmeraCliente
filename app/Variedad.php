@@ -2,9 +2,10 @@
 
 namespace App;
 
+use App\DataBase\VariedadDAO;
 use Illuminate\Database\Eloquent\Model;
 
-class Variedades extends Model
+class Variedad extends Model
 {
     protected $table = "Variedades";
     protected $primaryKey = 'VarID';

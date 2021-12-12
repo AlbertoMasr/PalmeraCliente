@@ -2,10 +2,10 @@
 
 namespace App;
 
+use App\DataBase\ProductoCarritoDAO;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
 
-class ProductosCarrito extends Model
+class ProductoCarrito extends Model
 {
 
     protected $table = "productoscarrito";
@@ -17,12 +17,12 @@ class ProductosCarrito extends Model
     private $idDatiles;
     private $cantidades;
     private $idClientes;
-    public $productosCarritoDAO;
+    public $productoCarritoDAO;
 
     public function __construct()
     {
 
-        $this->productosCarritoDAO = new productosCarritoDAO();
+        $this->productoCarritoDAO = new productoCarritoDAO();
         
     }
 
@@ -64,37 +64,32 @@ class ProductosCarrito extends Model
 
     public function añadir(){
         
-        return $this->productosCarritoDAO->añadir($this);
+        return $this->productoCarritoDAO->añadir($this);
 
     }
 
     public function getArticulos($idCliente){
         
-        return $this->productosCarritoDAO->getArticulos($idCliente);
+        return $this->productoCarritoDAO->getArticulos($idCliente);
 
     }
 
-    public function getSubTotal($productosCarrito){
+    public function getSubTotal($productoCarrito){
 
-        $subtotal = 0;
 
-        foreach ($productosCarrito as $productoCarrito) {
-            $subtotal += ($productoCarrito->objetoDatil->getPrecio() * $productoCarrito->getCantidades() );
-        }
-
-        return $subtotal;
+        return $productoCarrito->objetoDatil->getPrecio();
 
     }
 
     public function eliminarProductoCarrito($idCliente, $iDatil){
 
-        return $this->productosCarritoDAO->eliminarProductoCarrito($idCliente, $iDatil);
+        return $this->productoCarritoDAO->eliminarProductoCarrito($idCliente, $iDatil);
 
     }
 
     public function actualizarProductoCarrito(){
 
-        return $this->productosCarritoDAO->actualizarProductoCarrito($this);
+        return $this->productoCarritoDAO->actualizarProductoCarrito($this);
 
     }
 

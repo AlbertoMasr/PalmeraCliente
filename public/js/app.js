@@ -49931,8 +49931,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\alber\Desktop\New folder (2)\palmeraCliente\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\alber\Desktop\New folder (2)\palmeraCliente\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\alber\Desktop\PalmeraCliente\PalmeraCliente\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\alber\Desktop\PalmeraCliente\PalmeraCliente\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

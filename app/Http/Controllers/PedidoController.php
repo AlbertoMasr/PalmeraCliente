@@ -24,9 +24,9 @@ class PedidoController extends Controller
     public function iniciaPedido()
     {
 
-       $datiles = $this->datil->getDatiles();
+        $datiles = $this->datil->getDatiles();
 
-       return view('home', compact('datiles'));
+        return view('home', compact('datiles'));
 
     }
 
@@ -55,16 +55,16 @@ class PedidoController extends Controller
 
         }
 
-        $respuesta = json_decode($this->pedido->agregarProducto( $data["idDatil"], $data["cantidad"], Auth::user()->Clientes->getID()));
+        $respuesta = json_decode($this->pedido->agregarProducto( $data["idDatil"], $data["cantidad"], Auth::user()->Cliente->getID()));
 
         return redirect()->action("PedidoController@iniciaPedido")->with($respuesta->tipo, $respuesta->mensaje);
 
     }
 
-    public function confirmarPedido($idCliente)
+    public function confirmarPedido()
     {
 
-        $productoCarrito = $this->pedido->getArticulos($idCliente);
+        $productoCarrito = $this->pedido->getArticulos(Auth::user()->Cliente->getID());
 
         $total = $this->pedido->getTotal($productoCarrito);
 
@@ -78,7 +78,7 @@ class PedidoController extends Controller
 
         $respuesta = json_decode($this->pedido->eliminarProductoCarrito($idCliente, $idDatil));
 
-        return redirect()->action("PedidoController@confirmarPedido", $idCliente)->with($respuesta->tipo, $respuesta->mensaje);
+        return redirect()->action("PedidoController@confirmarPedido")->with($respuesta->tipo, $respuesta->mensaje);
 
     }
 
@@ -92,7 +92,7 @@ class PedidoController extends Controller
 
         $respuesta = json_decode($this->pedido->actualizarProductoCarrito($data["idCliente"], $data["idDatil"], $data["cantidad"]));
 
-        return redirect()->action("PedidoController@confirmarPedido", $data["idCliente"])->with($respuesta->tipo, $respuesta->mensaje);
+        return redirect()->action("PedidoController@confirmarPedido")->with($respuesta->tipo, $respuesta->mensaje);
 
     }    
 
@@ -112,11 +112,14 @@ class PedidoController extends Controller
             'Total' => 'required'
         ]);
 
-        $respuesta = $this->pedido->realizarPago($data["NoTarjeta"], $data["CVV"], $data["Total"]);
+        $respuesta = $this->pedido->realizarPago($data["NoTarjeta"], $data["FechaVencimiento"], $data["CVV"], $data["Total"]);
 
-        
+        if(!$respuesta)
+            return redirect()->action("PedidoController@confirmarPedido")->with($respuesta->tipo, $respuesta->mensaje);
 
-        //return redirect()->action("PedidoController@confirmarPedido", $data["idCliente"])->with($respuesta->tipo, $respuesta->mensaje);
+        $this->pedido->setCliente(Auth::user()->Cliente->getID());
+
+        $esCompletado = $this->pedido->esCompletado();
 
     }        
 

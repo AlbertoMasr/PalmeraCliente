@@ -1,12 +1,13 @@
 <?php
 
-namespace App;
+namespace App\DataBase;
 
+use App\ProductoCarrito;
 use Illuminate\Support\Facades\DB;
 use PHPUnit\Framework\MockObject\Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class ProductosCarritoDAO extends DB
+class ProductoCarritoDAO extends DB
 {
 
     public function añadir($cdc)
@@ -19,7 +20,7 @@ class ProductosCarritoDAO extends DB
     public function getArticulos($idCliente)
     {
 
-        return ProductosCarrito::where('idCliente', '=', $idCliente)->get();
+        return ProductoCarrito::where('idCliente', '=', $idCliente)->get();
 
     }
 
@@ -27,7 +28,7 @@ class ProductosCarritoDAO extends DB
 
         try{
 
-            ProductosCarrito::where('idCliente', '=', $idCliente)->where('idDatil', '=', $idDatil)->delete();
+            ProductoCarrito::where('idCliente', '=', $idCliente)->where('idDatil', '=', $idDatil)->delete();
 
             $respuesta = array(
                 "tipo" => "mensaje",

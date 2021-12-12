@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\DataBase\DatilDAO;
 use Illuminate\Database\Eloquent\Model;
 
 class Datil extends Model
@@ -50,6 +51,13 @@ class Datil extends Model
         
     }
 
+    public function getStock()
+    {
+
+        return $this->Stock;
+
+    }
+
     public function setVariedad($VarId){
 
         $this->Variedad = $VarId;
@@ -68,7 +76,7 @@ class Datil extends Model
     /* Referencia entre clases */
     public function objetoVariedad(){
 
-        return $this->belongsTo(Variedades::class, 'Variedad', 'VarID');
+        return $this->belongsTo(Variedad::class, 'Variedad', 'VarID');
 
     }
 

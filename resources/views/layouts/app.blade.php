@@ -127,7 +127,7 @@
                 </li>
             </ul>
 
-            <a href="{{ route('carrito', Auth::user()->Clientes->getID())}}" class="btn btn-outline-success my-2 my-sm-0 mr-4">Carrito</a>
+            <a href="{{ route('carrito')}}" class="btn btn-outline-success my-2 my-sm-0 mr-4">Carrito</a>
 
             <!--button class="btn btn-outline-success my-2 my-sm-0 mr-4" type="submit">Carrito</button-->
 
@@ -136,7 +136,13 @@
             </div>
         
         </div>
+
+        <main class="py-4" style="position: fixed; width: 20%;  z-index: 10; margin-top: 2%;">
+            @yield('active_reference')
+        </main>
+
     </nav>
+        
         <main class="py-4">
             @yield('content')
         </main>

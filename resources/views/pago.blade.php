@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('active_reference')
+
+    {{ Breadcrumbs::render('compra.solicitarTarjeta', $total) }}
+
+@endsection
+
 @section('content')
 
     <div class="container" style="margin-top: 5%">

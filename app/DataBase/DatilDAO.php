@@ -1,7 +1,8 @@
 <?php
 
-namespace App;
+namespace App\DataBase;
 
+use App\Datil;
 use Illuminate\Support\Facades\DB;
 use PHPUnit\Framework\MockObject\Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;

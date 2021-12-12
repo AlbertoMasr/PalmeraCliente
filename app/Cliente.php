@@ -70,7 +70,7 @@ class Cliente extends Model
 
     public function productosCarrito(){
 
-        return $this->hasMany(ProductosCarrito::class, 'idCliente');
+        return $this->hasMany(ProductoCarrito::class, 'idCliente');
 
     }
 

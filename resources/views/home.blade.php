@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('active_reference')
+
+    {{ Breadcrumbs::render('home') }}
+
+@endsection
+
 @section('content')
 
     <div class="container" style="margin-top: 5%" enctype="multipart/form-data">
@@ -23,7 +29,9 @@
 
         @foreach( $datiles as $datil )
 
-            <div class="card-columns">
+        <div class="row mx-auto pb-5 justify-content-around">
+
+            <div class="col-sm-6 text-center"> 
 
                 <div class="card p-3">
 
@@ -43,6 +51,8 @@
                 </div>
             
             </div>
+
+        </div>
 
         @endforeach
 
