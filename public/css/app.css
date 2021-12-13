@@ -10963,6 +10963,7 @@ a.text-dark:focus {
 }
 
 .breadcrumb {
-  background-color: transparent !important;
+  background-color: white !important;
+  width: 100% !important;
 }
 

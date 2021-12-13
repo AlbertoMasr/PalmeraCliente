@@ -8,7 +8,7 @@
 
 @section('content')
 
-    <div class="container" style="margin-top: 5%" enctype="multipart/form-data">
+    <div class="container" style="margin-top: 7%" enctype="multipart/form-data">
 
         @if (\Session::has('error'))
 

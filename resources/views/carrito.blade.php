@@ -8,7 +8,7 @@
 
 @section('content')
 
-    <div class="container" style="margin-top: 5%">
+    <div class="container" style="margin-top: 7%">
 
         <div class="card d-inline-flex p-2" style="width: 80%">
 
@@ -62,13 +62,21 @@
                                 <form method="POST" action="{{ route('carrito.actualizarProducto') }}">
                                 @csrf
 
-                                    <div class="d-flex">
-
-                                       <h6> Cantidad: </h6> <input class="p-2" type="number" id="cantidad" name="cantidad" min="1" max="1001" value="{{$producto->getCantidades()}}" />
+                                        <div class="container">
+                                        <div class="row">
+                                        <div class="col justify-content-center align-self-center">
+                                       <h6 class=""> Cantidad: </h6> 
+                                       </div>
+                                        <div class="col">
+                                       <input class="p-2" type="number" id="cantidad" name="cantidad" min="1" max="1001" value="{{$producto->getCantidades()}}" />
+                                       </div>
+                                        <div class="col">
                                         
                                         <input type="hidden" id="idDatil" name="idDatil" value="{{$producto->getIdDatiles()}}">
                                         <input type="hidden" id="idCliente" name="idCliente" value="{{$producto->getIdClientes()}}">
 
+                                       </div>
+                                        <div class="col">
                                         <button 
                                                 type="submit" 
                                                 class="btn btn-primary btn-sm p-2" 
@@ -76,10 +84,13 @@
                                             >
                                                 Actualizar
                                         </button>
+                                       </div>
+                                        <div class="col">
 
-                                        <a class="btn btn-danger btn-sm ml-auto p-2 text-center" href="{{ route('carrito.eliminarProducto', ['idCliente' => $producto->getIdClientes(), 'idDatil' => $producto->getIdDatiles()] ) }}"> Eliminar </a>                                            
-
-                                    </div>
+                                        <a class="btn btn-danger btn-sm ml-auto p-2 text-center" href="{{ route('carrito.eliminarProducto', ['idCliente' => $producto->getIdClientes(), 'idDatil' => $producto->getIdDatiles()] ) }}"> Eliminar </a>     
+                                        </div> 
+                                        </div>                                      
+                                        </div>     
 
                                 </form>
                             
@@ -97,7 +108,7 @@
 
         <div class="card d-inline-flex p-2" style="width: 15%">
 
-            <h5>Total: ${{$total}} ( {{count($productoCarrito)}} productos(s) )</h5>
+            <h5>{{count($productoCarrito)}} producto(s) <br>Total: ${{$total}} </h5>
             <a class="btn btn-primary"  href="{{ route('compra.solicitarTarjeta', ['total' => $total] ) }}"> Pagar </a>
         
         </div>

@@ -142,7 +142,7 @@
         
         </div>
 
-        <main class="py-4" style="position: fixed; width: 20%;  z-index: 10; margin-top: 2%;">
+        <main class="py-4" style="position: fixed; width: 100%;  z-index: 10; margin-top: 2%;">
             @yield('active_reference')
         </main>
 
