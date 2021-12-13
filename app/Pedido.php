@@ -112,17 +112,9 @@ class Pedido extends Model
     public function esCompletado()
     {
 
-        $pedido = $this->pedidoDAO->guardarPedido($this);
+        $respuesta = $this->pedidoDAO->guardarPedido($this);
 
-        if(!$pedido)
-            return 0;
-
-        $inventario = $this->pedidoDAO->actualizarInventario($this);
-
-        if(!$inventario)
-            return 0;
-
-        return 0;
+        return json_encode($respuesta);
 
     }
 

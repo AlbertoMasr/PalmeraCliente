@@ -28,7 +28,7 @@ class DatilDAO extends DB
 
                 $query->select('VarID')
                 ->from(with(new Variedad())->getTable())
-                ->where('varNombre', '=', $buscar);
+                ->where('varNombre', 'like', '%' . $buscar . '%');
 
             })->get();
 

@@ -119,7 +119,9 @@ class PedidoController extends Controller
 
         $this->pedido->setCliente(Auth::user()->Cliente->getID());
 
-        $esCompletado = $this->pedido->esCompletado();
+        $esCompletado = json_decode($this->pedido->esCompletado());
+
+        return redirect()->action("PedidoController@iniciaPedido")->with($esCompletado->tipo, $esCompletado->mensaje);
 
     }       
     
