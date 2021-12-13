@@ -8,7 +8,7 @@
 
 @section('content')
 
-    <div class="container" style="margin-top: 5%">
+    <div class="container" style="margin-top: 7%">
 
     <form method="POST" action="{{ route('compra.validarPago') }}">
             @csrf
@@ -70,17 +70,7 @@
                     onkeypress="return event.charCode > 47 && event.charCode < 58;"
                     pattern="[0-9]{4}"
                 >
-                /
-                <input 
-                    type="text" 
-                    id="AnioVencimiento"
-                    class="form-control @error('FechaVencimiento') is-invalid @enderror" 
-                    placeholder="Fecha de vencimiento" 
-                    name="FechaVencimiento" 
-                    maxlength="4"
-                    onkeypress="return event.charCode > 47 && event.charCode < 58;"
-                    pattern="[0-9]{4}"
-                >
+                
 
                 @error('FechaVencimiento')
                     <span class="invalid-feedback d_block" role="alert">

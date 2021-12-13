@@ -67,16 +67,16 @@
                                         <div class="col justify-content-center align-self-center">
                                        <h6 class=""> Cantidad: </h6> 
                                        </div>
-                                        <div class="col">
+                                        <div class="col justify-content-center align-self-cente">
                                        <input class="p-2" type="number" id="cantidad" name="cantidad" min="1" max="1001" value="{{$producto->getCantidades()}}" />
                                        </div>
-                                        <div class="col">
+                                        <div class="col justify-content-center align-self-cente">
                                         
                                         <input type="hidden" id="idDatil" name="idDatil" value="{{$producto->getIdDatiles()}}">
                                         <input type="hidden" id="idCliente" name="idCliente" value="{{$producto->getIdClientes()}}">
 
                                        </div>
-                                        <div class="col">
+                                        <div class="col justify-content-center align-self-cente">
                                         <button 
                                                 type="submit" 
                                                 class="btn btn-primary btn-sm p-2" 
@@ -85,7 +85,7 @@
                                                 Actualizar
                                         </button>
                                        </div>
-                                        <div class="col">
+                                        <div class="col justify-content-center align-self-cente">
 
                                         <a class="btn btn-danger btn-sm ml-auto p-2 text-center" href="{{ route('carrito.eliminarProducto', ['idCliente' => $producto->getIdClientes(), 'idDatil' => $producto->getIdDatiles()] ) }}"> Eliminar </a>     
                                         </div> 
