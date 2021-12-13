@@ -121,6 +121,31 @@ class PedidoController extends Controller
 
         $esCompletado = $this->pedido->esCompletado();
 
-    }        
+    }       
+    
+    public function buscarDatiles(Request $request)
+    {
+
+        $data = request()->validate([
+            'buscar' => 'required'
+        ]);
+
+        $datiles = $this->datil->buscarDatiles($data['buscar']);
+
+        if(sizeof($datiles) == 0)
+        {
+
+            $respuesta = array(
+                "tipo" => "error",
+                "mensaje" => "No se encontró variedad"
+            ); 
+
+            return redirect()->action("PedidoController@iniciaPedido")->with($respuesta['tipo'], $respuesta['mensaje']);
+
+        }
+
+        return view('home', compact('datiles'));
+
+    }
 
 }

@@ -10,7 +10,7 @@
 
     <div class="container" style="margin-top: 5%">
 
-        <div class="card">
+        <div class="card d-inline-flex p-2" style="width: 80%">
 
             @if (\Session::has('error'))
 
@@ -30,39 +30,61 @@
 
             @foreach( $productoCarrito as $producto )
 
-                <div class="card-columns justify-content-around row mx-auto pb-5 "> 
+                <div class="card-columns row mx-auto pt-5"> 
 
                     <div class="card p-3">
-                        <a href="{{ route('home.datil', $producto->objetoDatil->getID()) }}" width="100" heigth="100">
-                            <img class="card-img-top" src="http://127.0.0.1:8000/img/{{$producto->objetoDatil->getVariedad()}}.jpg" >
-                        </a>
-                        <div class="card-body">
 
-                            <h5 class="card-title">{{$producto->objetoDatil->objetoVariedad->getVarNombre()}} - {{$producto->objetoDatil->objetoCategoria->getCatNombre()}}</h5>
+                        <div class="d-inline-flex p-2">
 
-                            <form method="POST" action="{{ route('carrito.actualizarProducto') }}">
-                            @csrf
+                            <a href="{{ route('home.datil', $producto->objetoDatil->getID()) }}">
+                                <img class="card-img-top" src="http://127.0.0.1:8000/img/{{$producto->objetoDatil->getVariedad()}}.jpg" style="width: 150px; height: 150px">
+                            </a>
 
-                                Cantidad <input type="number" id="cantidad" name="cantidad" min="1" max="1001" value="{{$producto->getCantidades()}}" />
-                                
-                                Subtotal: ${{ ($producto->getCantidades() * $producto->objetoDatil->getPrecio()) }}
-                                Precio PU: ${{ $producto->objetoDatil->getPrecio() }}
+                        </div>
 
-                                <input type="hidden" id="idDatil" name="idDatil" value="{{$producto->getIdDatiles()}}">
-                                <input type="hidden" id="idCliente" name="idCliente" value="{{$producto->getIdClientes()}}">
+                        <div class="d-inline-flex p-2">
 
-                                <button 
-                                        type="submit" 
-                                        class="btn btn-primary" 
-                                        name="actualizar"
-                                    >
-                                        Actualizar
-                                </button>
+                            <div class="card-body">
 
-                            </form>
+                                <div class="d-inline-flex p-2">
 
-                            <a class="btn btn-danger" href="{{ route('carrito.eliminarProducto', ['idCliente' => $producto->getIdClientes(), 'idDatil' => $producto->getIdDatiles()] ) }}"> Eliminar </a>                                            
-                        
+                                    <h5 class="card-title">{{$producto->objetoDatil->objetoVariedad->getVarNombre()}} - {{$producto->objetoDatil->objetoCategoria->getCatNombre()}}</h5>
+
+                                </div>
+
+                                <div class="d-inline-flex p-2">
+
+                                    Subtotal: ${{ ($producto->getCantidades() * $producto->objetoDatil->getPrecio()) }}
+
+                                </div>
+
+
+                                <form method="POST" action="{{ route('carrito.actualizarProducto') }}">
+                                @csrf
+
+                                    <div class="d-flex">
+
+                                       <h6> Cantidad: </h6> <input class="p-2" type="number" id="cantidad" name="cantidad" min="1" max="1001" value="{{$producto->getCantidades()}}" />
+                                        
+                                        <input type="hidden" id="idDatil" name="idDatil" value="{{$producto->getIdDatiles()}}">
+                                        <input type="hidden" id="idCliente" name="idCliente" value="{{$producto->getIdClientes()}}">
+
+                                        <button 
+                                                type="submit" 
+                                                class="btn btn-primary btn-sm p-2" 
+                                                name="actualizar"
+                                            >
+                                                Actualizar
+                                        </button>
+
+                                        <a class="btn btn-danger btn-sm ml-auto p-2 text-center" href="{{ route('carrito.eliminarProducto', ['idCliente' => $producto->getIdClientes(), 'idDatil' => $producto->getIdDatiles()] ) }}"> Eliminar </a>                                            
+
+                                    </div>
+
+                                </form>
+                            
+                            </div>
+
                         </div>
                 
                     </div>
@@ -73,9 +95,11 @@
 
         </div>
 
-        <div class="justify-content-end">
-        <a class="btn btn-primary"  href="{{ route('compra.solicitarTarjeta', ['total' => $total] ) }}"> Pagar </a>
-        Total: ${{$total}}
+        <div class="card d-inline-flex p-2" style="width: 15%">
+
+            <h5>Total: ${{$total}} ( {{count($productoCarrito)}} productos(s) )</h5>
+            <a class="btn btn-primary"  href="{{ route('compra.solicitarTarjeta', ['total' => $total] ) }}"> Pagar </a>
+        
         </div>
 
     </div>

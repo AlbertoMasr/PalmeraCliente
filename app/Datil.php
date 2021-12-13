@@ -72,6 +72,13 @@ class Datil extends Model
 
     }
 
+    public function buscarDatiles($buscar)
+    {
+
+        return $this->datilDAO->buscarDatiles($buscar);
+
+    }
+
 
     /* Referencia entre clases */
     public function objetoVariedad(){

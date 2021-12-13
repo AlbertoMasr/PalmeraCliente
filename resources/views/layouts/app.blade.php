@@ -74,14 +74,19 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="position: fixed; width: 100%;  z-index: 10;">
         
         <a class="navbar-brand" href="{{ url('/') }}">
+
             {{ config('app.name', 'Laravel') }}
+
         </a>
         
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-          <form class="form-inline my-2 my-lg-0 ml-auto">
-            <input class="form-control mr-sm-2" type="search" placeholder="Buscar..." aria-label="Search">
+          <form class="form-inline my-2 my-lg-0 ml-auto" method="POST" action="{{ route('home.buscarDatiles') }}">
+            @csrf
+
+            <input class="form-control mr-sm-2" type="search" placeholder="Buscar variedad..." aria-label="Search" name="buscar" id="buscar">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+
           </form>
             
             @guest

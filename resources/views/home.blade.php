@@ -26,35 +26,35 @@
 
         @endif
 
-
         @foreach( $datiles as $datil )
 
-        <div class="row mx-auto pb-5 justify-content-around">
+            <div class="row mx-auto pb-5 justify-content-around">
 
-            <div class="col-sm-6 text-center"> 
+                <div class="col-sm-6 text-center"> 
 
-                <div class="card p-3">
+                    <div class="card p-3">
 
-                    <a href="{{ route('home.datil', $datil->getID()) }}" width="100" heigth="100">
-                        <img class="card-img-top" src="http://127.0.0.1:8000/img/{{$datil->getVariedad()}}.jpg" >
-                    </a>                    
+                        <a href="{{ route('home.datil', $datil->getID()) }}">
+
+                            <img class="card-img-top" src="http://127.0.0.1:8000/img/{{$datil->getVariedad()}}.jpg" >
+
+                        </a>                    
 
                         <div class="card-body">
 
                             <h5 class="card-title">{{$datil->objetoVariedad->getVarNombre()}} - {{$datil->objetoCategoria->getCatNombre()}}</h5>
-                            <p class="card-text">Precio: ${{ $datil->getPrecio()}}</p>
+                            <p class="card-text">Precio: ${{ $datil->getPrecio()}} kg</p>
                         
                         </div>
-
-                    </a>
-            
+                
+                    </div>
+                
                 </div>
-            
-            </div>
 
-        </div>
+            </div>
 
         @endforeach
 
     </div>
+    
 @endsection

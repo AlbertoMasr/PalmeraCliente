@@ -27,3 +27,4 @@ Route::get('/carrito/{idCliente}/{idDatil}', 'PedidoController@eliminarProductoC
 Route::post('/carrito', 'PedidoController@actualizarProductoCarrito')->name('carrito.actualizarProducto');
 Route::get('/pago/{total}', 'PedidoController@solicitarTarjeta')->name('compra.solicitarTarjeta');
 Route::post('/pago', 'PedidoController@validarPago')->name('compra.validarPago');
+Route::post('/home/datiles', 'PedidoController@buscarDatiles')->name('home.buscarDatiles');
